@@ -14,14 +14,14 @@ for csv_file in csv_files:
         reader = csv.DictReader(input_file)
         data = list(reader)
 
-    # Filter the data to include every 5-minute interval
+    # Filter the data to include every 12-hour interval
     filtered_data = []
     for row in data:
         date_str, time_str = row['date'].split()
         month, day, year = [int(x) for x in date_str.split('/')]
         hour, minute = [int(x) for x in time_str.split(':')]
         date_time = datetime(year=2000 + int(year), month=month, day=day, hour=hour, minute=minute)
-        if date_time.minute % 5 == 0:
+        if date_time.hour % 12 == 0:
             filtered_data.append(row)
 
     # Append the filtered data to the combined list
