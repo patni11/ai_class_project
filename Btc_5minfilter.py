@@ -21,7 +21,7 @@ for csv_file in csv_files:
         month, day, year = [int(x) for x in date_str.split('/')]
         hour, minute = [int(x) for x in time_str.split(':')]
         date_time = datetime(year=2000 + int(year), month=month, day=day, hour=hour, minute=minute)
-        if date_time.min % 5 == 0:
+        if date_time.minute % 5 == 0:
             filtered_data.append(row)
 
     # Append the filtered data to the combined list
